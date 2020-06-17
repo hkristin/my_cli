@@ -19,4 +19,10 @@ class Election
   def save
     @@all << self
   end
+  
+   def self.create(name)
+    election = Election.new(name)
+    election.save
+    election
+  end
 end

@@ -22,4 +22,11 @@ class Candidate
   def save
     @@all << self
   end
+  
+  def self.create(name)
+    candidate = Candidate.new(name)
+    candidate.save
+    candidate
+  end
+  
 end

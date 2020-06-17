@@ -1,11 +1,11 @@
 class My_CLI
   
   def initialize
-    puts "hi"
+    puts "Welcome"
   end
   
   def call
-    puts "Welcome!"
+    puts "Today is a day for change!"
   end
   
 end

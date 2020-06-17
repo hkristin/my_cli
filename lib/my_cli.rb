@@ -1,6 +1,5 @@
-require "my_cli/version"
-
-module MyCli
-  class Error < StandardError; end
-  # Your code goes here...
+class My_CLI
+  def call
+    puts "Welcome!"
+  end
 end

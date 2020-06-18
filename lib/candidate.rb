@@ -28,5 +28,14 @@ class Candidate
     candidate.save
     candidate
   end
+    
+  def self.load_candidates
+  #retrieve api info
+  
+  end
+
+  def self.display_candidates
+    #invokes load_candidates, iterate to display each
+  end
   
 end

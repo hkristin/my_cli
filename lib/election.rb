@@ -26,10 +26,10 @@ class Election
   end
 
   def self.load_elections
-  
+  #retrieves json data from api
   end
 
   def self.display_elections
-    
+    #invokes load_elections, iterates to display
   end
 end

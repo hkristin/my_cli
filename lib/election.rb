@@ -5,7 +5,6 @@ class Election
 
   def initialize(name)
     @name = name
-    @@all << self
   end
   
   def self.all
@@ -25,6 +24,12 @@ class Election
     election.save
     election
   end
+
+  def self.load_elections
   
-  
+  end
+
+  def self.display_elections
+    
+  end
 end

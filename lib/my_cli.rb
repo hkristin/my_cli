@@ -3,8 +3,17 @@ class My_CLI
   def call
     puts "Welcome, today is a day for change!"
     
-    Votesmart_Api.get_election_data(15217)
-    # puts "Enter zipcode to search for upcoming elections in your area: (user enters a valid zipcode)" <-- 
+    puts "Please enter your zipcode to see upcoming elections in your local area:"
+    
+    zipcode = gets.strip.to_i
+    Votesmart_Api.get_election_data(zipcode)
+    
+    puts "These are the elections in your local area:"
+    
+    
+    
+    
+    # puts "Enter your zipcode to see the upcoming elections in your area: (user enters a valid zipcode)" <-- 
     # This should be handled in a way that, if the user enters an invalid zipcode, a message is put out and 
     # may try again. (puts "Invalid zipcode. Please try again!")
     

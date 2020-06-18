@@ -25,4 +25,6 @@ class Election
     election.save
     election
   end
+  
+  
 end

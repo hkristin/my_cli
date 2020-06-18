@@ -4,6 +4,7 @@ require "dotenv"
 require "rest-client"
 require "json"
 require "colorize"
+
 Dotenv.load
 
 require_relative "../lib/my_cli/version"

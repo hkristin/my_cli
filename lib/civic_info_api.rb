@@ -7,7 +7,7 @@ class Civic_Info_Api
   def self.get_election_data(street_address)
     path = "#{@@base_url}/voterinfo?key=#{@@api_key}&address=#{street_address.gsub(",", " ").gsub(" ", "%20")}&electionId=2000"
     response = RestClient.get(path)
-    
+    binding.pry
   end
   
   def self.get_candidate_info

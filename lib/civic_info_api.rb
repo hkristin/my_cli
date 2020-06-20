@@ -2,10 +2,29 @@ class Civic_Info_Api
   @@base_url = "https://www.googleapis.com/civicinfo/v2"
   
   @@api_key = "AIzaSyBWHWJ7VkM7Q7WP4zUBd4lHv-JQ6-YvoSE"
+ 
   
   def self.get_election_data(zipcode) 
+    Election.all.clear
+    response = RestClient.get("#{self.base_url}#{election}/#{candidate}.json?api-key=#{self.api_key}")
+  end
+  
+  def self.get_candidate_info
+    response = RestClient.get("#{self.base_url}names.json?api-key=#{self.api_key}")
+    response = JSON.parse(response.body, symbolize_names:true)
+    results = response[:results]
+    results = results.slice(0, results.length-54)
+    results
+  end  
+  
+  def self.api_key
+    @@api_key
+  end
+
+  def self.base_url
+    @@base_url
+  end
     
-    response = RestClient.get(@@base_url + ".getElectionByZip?zip5=#{zipcode}")
+    #(@@base_url + ".getElectionByZip?zip5=#{zipcode}")
     #binding.pry
   end
-end

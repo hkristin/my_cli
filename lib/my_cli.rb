@@ -5,8 +5,8 @@ class My_CLI
     
     puts "Please enter your zipcode to see upcoming elections in your local area:"
     
-    zipcode = gets.strip.to_i
-    Civic_Info_Api.get_election_data(zipcode)
+    street_address = gets.strip
+    Civic_Info_Api.get_election_data(street_address)
     
     puts "These are the elections in your local area:"
     

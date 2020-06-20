@@ -4,9 +4,10 @@ class Civic_Info_Api
   @@api_key = "AIzaSyBWHWJ7VkM7Q7WP4zUBd4lHv-JQ6-YvoSE"
  
   
-  def self.get_election_data(zipcode) 
-    Election.all.clear
-    response = RestClient.get("#{self.base_url}#{election}/#{candidate}.json?api-key=#{self.api_key}")
+  def self.get_election_data(street_address)
+    path = "#{@@base_url}/voterinfo?key=#{@@api_key}&address=#{street_address.gsub("," " ").gsub(" ", "%20")}&electionId=2000"
+    binding.pry
+    response = RestClient.get(path)
   end
   
   def self.get_candidate_info

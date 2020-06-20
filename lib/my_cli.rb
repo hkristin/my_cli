@@ -3,7 +3,7 @@ class My_CLI
   def call
     puts "Welcome, today is a day for change!"
     
-    puts "Please enter your zipcode to see upcoming elections in your local area:"
+    puts "Please enter a valid street address (1263 Pacific Ave. Kansas City, KS) to see upcoming elections in your local area:"
     
     street_address = gets.strip
     Civic_Info_Api.get_election_data(street_address)

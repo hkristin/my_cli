@@ -6,11 +6,11 @@ class My_CLI
     puts "Please enter a valid street address (1263 Pacific Ave. Kansas City, KS) to see upcoming elections in your local area:"
     
     street_address = gets.strip
-    Civic_Info_Api.get_election_data(street_address)
+    Election.load_elections(street_address)
     
     puts "These are the elections in your local area:"
     
-    
+    Election.display_elections()
     
     
     # puts "Enter your zipcode to see the upcoming elections in your area: (user enters a valid zipcode)" <-- 

@@ -3,9 +3,8 @@ class Election
   
   @@all = []
 
-  def initialize(name, date)
+  def initialize(name)
     @name = name
-    @date = date
    
   end
   
@@ -27,19 +26,18 @@ class Election
     election
   end
 
-  def self.load_elections(zipcode)
-  #retrieves json data from api
-  results = civic_info_api.get_election_data(zipcode)
-    results.collect do |result|
-      election = self.new(name[:name])
-      election.date = result[:date]
+  def self.load_elections(street_address)
+  results = Civic_Info_Api.get_election_data(street_address)
+  contests = results["contests"]
+    contests.collect do |contest|
+      new_election = Election.create(contest["office"])
+     #binding.pry
     end
   end
 
-  def self.display_elections
-    #invokes load_elections, iterates to display
-    self.all.each do |election|
-      puts "#{election.name}, #{election.date}".colorize(:magenta)
+  def self.display_elections()
+    self.all.each_with_index do |election, index|
+      puts "#{index + 1}. #{election.name}".colorize(:magenta)
     end
   end
 end

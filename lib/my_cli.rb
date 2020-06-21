@@ -20,6 +20,8 @@ class My_CLI
     
     puts "Here is the list of candidates for the selected election:"
     
+    binding.pry
+    
     Candidate.display_candidates(selected_election, street_address)
     
     # puts "Enter your zipcode to see the upcoming elections in your area: (user enters a valid zipcode)" <-- 

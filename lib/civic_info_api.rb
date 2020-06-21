@@ -15,7 +15,8 @@ class Civic_Info_Api
     path = "#{@@base_url}/voterinfo?key=#{@@api_key}&address=#{street_address.gsub(",", " ").gsub(" ", "%20")}&electionId=2000"
     response = RestClient.get(path)
     response_json = JSON.parse(response.body)
-    candidates = response_json["contests"][selected_election]["candidates"]
+    binding.pry
+    candidates = response_json["contests"][selected_election-1]["candidates"]
    # binding.pry
   end  
   

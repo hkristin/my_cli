@@ -36,9 +36,9 @@ class Candidate
   end
 
   def self.display_candidates(selected_election, street_address)
-   candidate_array = self.load_candidates(selected_election, street_address)
     puts "Loading Candidates...".colorize(:light_cyan)
     sleep 3
+    candidate_array = self.load_candidates(selected_election, street_address)
     candidate_array.each.with_index(1) do |candidate, index|
         puts "#{index}. #{candidate.display_name}".colorize(:cyan)
     end

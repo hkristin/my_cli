@@ -26,25 +26,22 @@ class Election
     election
   end
   
-  def self.find_by(name) 
-    self.all.each do |election|
-      if election.name 
-       return election 
-      end
+  def self.find_by_name(name) 
+    self.all.find do |election|
+      election.name == name
     end
   end
   
   
   def self.find_or_create_by(name) 
-    self.find_by(name) || self.create(name)
+    self.find_by_name(name) || self.create(name)
   end
 
   def self.load_elections(street_address)
     results = Civic_Info_Api.get_election_data(street_address)
     contests = results["contests"]
     contests = contests.collect do |contest|
-      new_election = Election.create(contest["office"])
-     #binding.pry
+      new_election = Election.find_or_create_by(contest["office"])
     end
     
     contests.delete_if do |contest|

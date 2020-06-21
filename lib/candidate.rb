@@ -29,19 +29,16 @@ class Candidate
     candidate
   end
     
-  def self.load_candidates
-  #retrieve api info
-  if(self.all.empty?)
-      results = civic_info_api.get_candidate_info
+  def self.load_candidates(selected_election, street_address)
+      results = Civic_Info_Api.get_candidate_info(selected_election, street_address)
       candidate_array = results.collect do |result|
         self.new(result[:name], result[:party], result[:age], result[:gender])
       end
+      binding.pry
     end
   end
 
   def self.display_candidates
-    #invokes load_candidates, iterate to display each
-    
     self.load_candidates
     candidate_array = self.all
     puts "Loading Candidates...".colorize(:light_cyan)

@@ -12,11 +12,10 @@ class Civic_Info_Api
   end
   
   def self.get_candidate_info
-    response = RestClient.get("#{self.base_url}names.json?api-key=#{self.api_key}")
-    response = JSON.parse(response.body, symbolize_names:true)
-    results = response[:results]
-    results = results.slice(0, results.length-54)
-    results
+    path = "#{@@base_url}/voterinfo?key=#{@@api_key}&address=#{street_address.gsub(",", " ").gsub(" ", "%20")}&electionId=2000"
+    response = RestClient.get(path)
+    response_json = JSON.parse(response.body)
+    binding.pry
   end  
   
   def self.api_key

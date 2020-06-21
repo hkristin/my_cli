@@ -12,6 +12,14 @@ class My_CLI
     
     Election.display_elections()
     
+    puts "Select a number for an election you would like to learn more about:"
+    
+    selected_election = gets.strip.to_i
+    
+    Candidate.load_candidates(selected_election, street_address)
+    
+    puts "Here is the list of candidates for the selected election:"
+    
     
     # puts "Enter your zipcode to see the upcoming elections in your area: (user enters a valid zipcode)" <-- 
     # This should be handled in a way that, if the user enters an invalid zipcode, a message is put out and 

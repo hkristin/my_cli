@@ -4,13 +4,25 @@ class My_CLI
     puts "Welcome, today is a day for change!"
     puts "(Type 'exit' at anytime to leave)"
     
+    
+    invalidAddress = true
+    
+    while(invalidAddress)
+    
     puts "Please enter a valid street address (1263 Pacific Ave. Kansas City, KS) to see upcoming elections in your local area:"
     
     street_address = gets.strip
     
     if street_address == "exit" 
-      exit 
+      exit
+    elsif !/\d+.+(?=AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY)[A-Z]{2}?/.match(street_address)
+      puts "Invalid address! Please try again."
+    else 
+      invalidAddress = false
     end
+    
+  end
+    
       
     Election.load_elections(street_address)
     

@@ -11,11 +11,12 @@ class Civic_Info_Api
     #binding.pry
   end
   
-  def self.get_candidate_info
+  def self.get_candidate_info(selected_election, street_address)
     path = "#{@@base_url}/voterinfo?key=#{@@api_key}&address=#{street_address.gsub(",", " ").gsub(" ", "%20")}&electionId=2000"
     response = RestClient.get(path)
     response_json = JSON.parse(response.body)
-    binding.pry
+    candidates = response_json["contests"][selected_election]["candidates"]
+   # binding.pry
   end  
   
   def self.api_key

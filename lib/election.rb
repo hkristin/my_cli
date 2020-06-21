@@ -35,8 +35,9 @@ class Election
     end
   end
 
-  def self.display_elections()
-    self.all.each_with_index do |election, index|
+  def self.display_elections(street_address)
+    elections = self.load_elections(street_address)
+    elections.each_with_index do |election, index|
       puts "#{index + 1}. #{election.name}".colorize(:magenta)
     end
   end

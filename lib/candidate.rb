@@ -28,19 +28,20 @@ class Candidate
     
   def self.load_candidates(selected_election, street_address)
       results = Civic_Info_Api.get_candidate_info(selected_election, street_address)
-      candidate_array = results.collect do |result|
-        new_candidate = self.create(result["name"], result["party"])
+      candidate_array = results["contests"][selected_election-1]["candidates"]
+      return_array = candidate_array.collect do |candidate|
+        new_candidate = self.create(candidate["name"], candidate["party"])
       end
-     # binding.pry
+      return_array
     end
-  end
+
 
   def self.display_candidates(selected_election, street_address)
     puts "Loading Candidates...".colorize(:light_cyan)
     sleep 3
     candidate_array = self.load_candidates(selected_election, street_address)
     candidate_array.each.with_index(1) do |candidate, index|
-        puts "#{index}. #{candidate.display_name}".colorize(:cyan)
+        puts "#{index}. #{candidate.name} | #{candidate.party}".colorize(:cyan)
     end
   end
-  
+end
